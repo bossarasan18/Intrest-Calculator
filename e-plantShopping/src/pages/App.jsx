@@ -1,14 +1,13 @@
 import React from "react";
 
-function ContactUs() {
+function App() {
   return (
-    <div className="contact-us-container">
-      <h1>Contact Us</h1>
-      <p>Email: info@eplantshopping.com</p>
-      <p>Phone: +91 98765 43210</p>
-      <p>Address: 123 Green Street, Perambalur, TN, India</p>
+    <div className="landing-page">
+      <h1>Paradise Nursery</h1>
+      <p>Welcome to Paradise Nursery – bringing nature closer to your home.</p>
+      <button className="get-started-btn">Get Started</button>
     </div>
   );
 }
 
-export default ContactUs;
+export default App;
