@@ -1,17 +1,31 @@
-import React from "react";
+import { createSlice } from "@reduxjs/toolkit";
 
-function Services() {
-  return (
-    <div className="services-container">
-      <h1>Our Services</h1>
-      <ul>
-        <li>Plant Sales – Ornamental, Fruit, and Medicinal</li>
-        <li>Garden Design and Landscaping</li>
-        <li>Plant Care Consultation</li>
-        <li>Eco-friendly Gardening Workshops</li>
-      </ul>
-    </div>
-  );
-}
+const initialState = {
+  items: [],
+};
 
-export default Services;
+const cartSlice = createSlice({
+  name: "cart",
+  initialState,
+  reducers: {
+    addItem: (state, action) => {
+      // Add new item to cart
+      state.items.push(action.payload);
+    },
+    removeItem: (state, action) => {
+      // Remove item by id
+      state.items = state.items.filter(item => item.id !== action.payload);
+    },
+    updateQuantity: (state, action) => {
+      // Update quantity of item by id
+      const { id, quantity } = action.payload;
+      const item = state.items.find(item => item.id === id);
+      if (item) {
+        item.quantity = quantity;
+      }
+    },
+  },
+});
+
+export const { addItem, removeItem, updateQuantity } = cartSlice.actions;
+export default cartSlice.reducer;
